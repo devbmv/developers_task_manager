@@ -181,7 +181,7 @@ def main():
                 add_task(input("Enter task: "))
             elif choice == "2":
                 modify_task(
-                    input("Select id to modify"), input("Enter task to modify: ")
+                    input("Select id to modify: "), input("Enter description: ")
                 )
             elif choice == "3":
                 delete_task(int(input("Choice task number: ")))
