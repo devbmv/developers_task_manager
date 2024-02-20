@@ -60,6 +60,24 @@
         "documentation": {}
     },
     {
+        "label": "load_tasks",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def load_tasks():\n    \"\"\"\n    Loads tasks from the log file into the global tasks list.\n    \"\"\"\n    global tasks\n    tasks.clear()\n    with open(full_path, \"r\", encoding=\"utf-8\") as file:\n        # Skip the header by splitting on the task separator and ignore the first split part\n        task_data = file.read().strip().split(\"-\" * 74 + \"\\n\")[1:]\n        for task_block in task_data:",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "save_tasks",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def save_tasks():\n    \"\"\"\n    Saves tasks from the global tasks list to the log file.\n    \"\"\"\n    with open(full_path, \"w\", encoding=\"utf-8\") as file:\n        file.write(f\"{'-'*92} List Of Tasks: {'-'*92}\\n\")\n        count = 0\n        for task in tasks:\n            task[\"ID\"] = str(count)\n            for key, value in task.items():",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "run",
@@ -100,7 +118,7 @@
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "file_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):\n    full_path = LOG_FILE_NAME\nelse:\n    # If running locally, store the tasks log on the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name\ndef main():",
+        "peekOfCode": "file_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):\n    full_path = LOG_FILE_NAME\nelse:\n    # If running locally, store the tasks log on the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name\n#==================================================================================================================",
         "detail": "run",
         "documentation": {}
     },
@@ -109,7 +127,7 @@
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "LOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):\n    full_path = LOG_FILE_NAME\nelse:\n    # If running locally, store the tasks log on the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name\ndef main():\n    \"\"\"",
+        "peekOfCode": "LOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):\n    full_path = LOG_FILE_NAME\nelse:\n    # If running locally, store the tasks log on the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name\n#==================================================================================================================\ndef load_tasks():",
         "detail": "run",
         "documentation": {}
     }
