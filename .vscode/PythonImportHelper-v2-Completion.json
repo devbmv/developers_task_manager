@@ -118,7 +118,7 @@
         "kind": 2,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function of the program. Handles user interaction.\n    \"\"\"\n    init()\n    if not full_path.exists():\n        full_path.touch()\n    load_tasks()\n    print(Fore.GREEN + \"Welcome to Developers' Task Manager\")\n    while True:",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function of the program. Handles user interaction.\n    \"\"\"\n    init()\n    load_tasks()\n    print(Fore.GREEN + \"Welcome to Developers' Task Manager\")\n    while True:\n        time.sleep(1)\n        clear_screen()",
         "detail": "run",
         "documentation": {}
     },
@@ -127,7 +127,7 @@
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "tasks = []\n# Initialize task ID based on the current length of tasks\nTASK_ID = 0\n# Define a separator for visual clarity in the log file\nseparator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv( \"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):",
+        "peekOfCode": "tasks = []\n# Initialize task ID based on the current length of tasks\nTASK_ID = 0\n# Define a separator for visual clarity in the log file\nseparator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:",
         "detail": "run",
         "documentation": {}
     },
@@ -136,7 +136,7 @@
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "TASK_ID = 0\n# Define a separator for visual clarity in the log file\nseparator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv( \"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):\n    full_path = LOG_FILE_NAME\nelse:",
+        "peekOfCode": "TASK_ID = 0\n# Define a separator for visual clarity in the log file\nseparator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:\n    # We are on Heroku or a similar cloud environment, use a relative path\n    full_path = Path(LOG_FILE_NAME)",
         "detail": "run",
         "documentation": {}
     },
@@ -145,7 +145,7 @@
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "separator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv( \"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):\n    full_path = LOG_FILE_NAME\nelse:\n    # If running locally, store the tasks log on the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"",
+        "peekOfCode": "separator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:\n    # We are on Heroku or a similar cloud environment, use a relative path\n    full_path = Path(LOG_FILE_NAME)\nelse:\n    # Local environment, attempt to use the desktop for easy access",
         "detail": "run",
         "documentation": {}
     },
@@ -154,7 +154,7 @@
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "file_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv( \"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):\n    full_path = LOG_FILE_NAME\nelse:\n    # If running locally, store the tasks log on the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name\n# ==================================================================================================================",
+        "peekOfCode": "file_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:\n    # We are on Heroku or a similar cloud environment, use a relative path\n    full_path = Path(LOG_FILE_NAME)\nelse:\n    # Local environment, attempt to use the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name",
         "detail": "run",
         "documentation": {}
     },
@@ -163,7 +163,7 @@
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "LOG_FILE_NAME = os.getenv( \"TASKS_LOG_PATH\", \"tasks_log.txt\")\n# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path\nif os.path.isabs(LOG_FILE_NAME):\n    full_path = LOG_FILE_NAME\nelse:\n    # If running locally, store the tasks log on the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name\n# ==================================================================================================================\ndef load_tasks():",
+        "peekOfCode": "LOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:\n    # We are on Heroku or a similar cloud environment, use a relative path\n    full_path = Path(LOG_FILE_NAME)\nelse:\n    # Local environment, attempt to use the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name\n# Ensure the file exists, creating it if necessary",
         "detail": "run",
         "documentation": {}
     }

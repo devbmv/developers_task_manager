@@ -10,7 +10,6 @@ import time
 from pathlib import Path
 from colorama import init, Fore
 
-
 # Initialize an empty list to store tasks
 tasks = []
 # Initialize task ID based on the current length of tasks
@@ -20,15 +19,22 @@ separator = "-" * 200
 # Define the filename for storing task logs
 file_name = "tasks_log.txt"
 
-LOG_FILE_NAME = os.getenv( "TASKS_LOG_PATH", "tasks_log.txt")
+LOG_FILE_NAME = os.getenv("TASKS_LOG_PATH", file_name)
 
-# Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path
-if os.path.isabs(LOG_FILE_NAME):
-    full_path = LOG_FILE_NAME
+# Determine if the environment is Heroku or similar cloud environment
+if "DYNO" in os.environ:
+    # We are on Heroku or a similar cloud environment, use a relative path
+    full_path = Path(LOG_FILE_NAME)
 else:
-    # If running locally, store the tasks log on the desktop for easy access
+    # Local environment, attempt to use the desktop for easy access
     desktop_path = Path.home() / "Desktop"
     full_path = desktop_path / file_name
+
+# Ensure the file exists, creating it if necessary
+if not full_path.exists():
+    # This will create the file in the specified path
+    full_path.touch()
+
 # ==================================================================================================================
 
 
@@ -161,8 +167,6 @@ def main():
     The main function of the program. Handles user interaction.
     """
     init()
-    if not full_path.exists():
-        full_path.touch()
 
     load_tasks()
     print(Fore.GREEN + "Welcome to Developers' Task Manager")
