@@ -87,6 +87,15 @@
         "documentation": {}
     },
     {
+        "label": "delete_task",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def delete_task(task_id):\n    \"\"\"\n    Deletes a task based on its ID.\n    Parameters:\n    - task_id (int): The ID of the task to be deleted.\n    \"\"\"\n    global tasks\n    task_id = str(task_id)\n    tasks = [task for task in tasks if task[\"ID\"] != task_id]\n    save_tasks()",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "run",

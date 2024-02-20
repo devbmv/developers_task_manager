@@ -88,7 +88,23 @@ def add_task(description):
     tasks.append(task)
     save_tasks()
     print(f"Task ID {task_id}: '{description}' successfully added.")
+    
+#==================================================================================================================
 
+def delete_task(task_id):
+    """
+    Deletes a task based on its ID.
+
+    Parameters:
+    - task_id (int): The ID of the task to be deleted.
+    """
+    global tasks
+    task_id = str(task_id)
+    tasks = [task for task in tasks if task["ID"] != task_id]
+    save_tasks()
+    print(f"Task ID {task_id} has been successfully deleted.")
+
+#==================================================================================================================
 
 def main():
     """
