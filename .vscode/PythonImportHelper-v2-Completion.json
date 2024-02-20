@@ -78,6 +78,15 @@
         "documentation": {}
     },
     {
+        "label": "add_task",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def add_task(description):\n    \"\"\"\n    Adds a new task with the given description to the tasks list and logs it to the file.\n    Parameters:\n    - description (str): The description of the task to be added.\n    \"\"\"\n    task_id = len(tasks) + 1\n    now = time.localtime()\n    task = {\n        \"ID\": str(task_id),",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "run",

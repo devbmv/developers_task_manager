@@ -30,6 +30,7 @@ else:
     desktop_path = Path.home() / "Desktop"
     full_path = desktop_path / file_name
 #==================================================================================================================
+    
 def load_tasks():
     """
     Loads tasks from the log file into the global tasks list.
@@ -50,7 +51,9 @@ def load_tasks():
                     # Handle lines without a colon. Here we simply pass, but you might want to log a warning.
                     pass
             tasks.append(task_dict)
+
 #==================================================================================================================
+            
 def save_tasks():
     """
     Saves tasks from the global tasks list to the log file.
@@ -66,6 +69,26 @@ def save_tasks():
             file.write(f"{separator}\n")
 
 #==================================================================================================================
+
+def add_task(description):
+    """
+    Adds a new task with the given description to the tasks list and logs it to the file.
+
+    Parameters:
+    - description (str): The description of the task to be added.
+    """
+    task_id = len(tasks) + 1
+    now = time.localtime()
+    task = {
+        "ID": str(task_id),
+        "Date": time.strftime("%Y-%m-%d", now),
+        "Time": time.strftime("%H:%M:%S", now),
+        "Task": description,
+    }
+    tasks.append(task)
+    save_tasks()
+    print(f"Task ID {task_id}: '{description}' successfully added.")
+
 
 def main():
     """
