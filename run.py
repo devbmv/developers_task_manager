@@ -20,7 +20,7 @@ separator = "-" * 200
 # Define the filename for storing task logs
 file_name = "tasks_log.txt"
 
-LOG_FILE_NAME = os.getenv("TASKS_LOG_PATH", "tasks_log.txt")
+LOG_FILE_NAME = os.getenv( "TASKS_LOG_PATH", "tasks_log.txt")
 
 # Check if the LOG_FILE_NAME is an absolute path, if not, use the desktop path
 if os.path.isabs(LOG_FILE_NAME):
