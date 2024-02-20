@@ -64,7 +64,7 @@
         "kind": 2,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "def load_tasks():\n    \"\"\"\n    Loads tasks from the log file into the global tasks list.\n    \"\"\"\n    global tasks\n    tasks.clear()\n    with open(full_path, \"r\", encoding=\"utf-8\") as file:\n        # Skip the header by splitting on the task separator and ignore the first split part\n        task_data = file.read().strip().split(\"-\" * 74 + \"\\n\")[1:]\n        for task_block in task_data:",
+        "peekOfCode": "def load_tasks():\n    \"\"\"\n    Loads tasks from the log file into the global tasks list.\n    \"\"\"\n    global tasks\n    tasks.clear()\n    with open(full_path, \"r\", encoding=\"utf-8\") as file:\n        # Skip the header by splitting on the task separator\n        task_data = file.read().strip().split(\"-\" * 74 + \"\\n\")[1:]\n        for task_block in task_data:",
         "detail": "run",
         "documentation": {}
     },
@@ -82,7 +82,7 @@
         "kind": 2,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "def add_task(description):\n    \"\"\"\n    Adds a new task with the given description to the tasks list and logs it to the file.\n    Parameters:\n    - description (str): The description of the task to be added.\n    \"\"\"\n    task_id = len(tasks) + 1\n    now = time.localtime()\n    task = {\n        \"ID\": str(task_id),",
+        "peekOfCode": "def add_task(description):\n    \"\"\"\n    Adds a new task with the given description to the\n    tasks list and logs it to the file.\n    Parameters:\n    - description (str): The description of the task to be added.\n    \"\"\"\n    task_id = len(tasks) + 1\n    now = time.localtime()\n    task = {",
         "detail": "run",
         "documentation": {}
     },

@@ -45,7 +45,7 @@ def load_tasks():
     global tasks
     tasks.clear()
     with open(full_path, "r", encoding="utf-8") as file:
-        # Skip the header by splitting on the task separator and ignore the first split part
+        # Skip the header by splitting on the task separator
         task_data = file.read().strip().split("-" * 74 + "\n")[1:]
         for task_block in task_data:
             task_info = task_block.strip().split("\n")
@@ -55,7 +55,7 @@ def load_tasks():
                     key, value = line.split(":", 1)
                     task_dict[key.strip()] = value.strip()
                 else:
-                    # Handle lines without a colon. Here we simply pass, but you might want to log a warning.
+                    # Handle lines without a colon.
                     pass
             tasks.append(task_dict)
 
@@ -83,8 +83,8 @@ def save_tasks():
 
 def add_task(description):
     """
-    Adds a new task with the given description to the tasks list and logs it to the file.
-
+    Adds a new task with the given description to the
+    tasks list and logs it to the file.
     Parameters:
     - description (str): The description of the task to be added.
     """
@@ -138,8 +138,10 @@ def modify_task(task_id, new_description):
     if found:
         save_tasks()
         print(
-            f"Task ID {task_id} has been successfully modified to: '{new_description}'."
+            f"Task ID {task_id} has been successfully modified to:"
+            + f"'{new_description}'."
         )
+
     else:
         print(f"Task ID {task_id} not found.")
 
@@ -166,30 +168,46 @@ def main():
     """
     The main function of the program. Handles user interaction.
     """
+
     init()
 
     load_tasks()
     print(Fore.GREEN + "Welcome to Developers' Task Manager")
+
     while True:
+
         time.sleep(1)
         clear_screen()
+
         print("Developers Task Manager:\n")
         print("1: Add task\n2: Modify task\n3: Delete task\n4: Exit\n")
         choice = input("Select action: ")
+
         try:
             if choice == "1":
+
                 add_task(input("Enter task: "))
+
             elif choice == "2":
-                modify_task(
-                    input("Select id to modify: "), input("Enter description: ")
-                )
+
+                task_id_to_modify = input("Select id to modify: ")
+                new_description = input("Enter new description: ")
+                modify_task(task_id_to_modify, new_description)
+
             elif choice == "3":
+
                 delete_task(int(input("Choice task number: ")))
+
             elif choice == "4":
+
                 break
+
             else:
+
                 print("Invalid selection. Please try again.")
+
         except Exception as e:
+
             print(f"An error occurred: {e}")
 
 
