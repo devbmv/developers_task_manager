@@ -130,11 +130,25 @@ def modify_task(task_id, new_description):
 
 #==================================================================================================================
 
+def clear_screen():
+    """
+    Clears the console screen based on the operating system.
+    """
+    # Check if the operating system is Windows
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        # Assume the operating system is Unix/Linux/Mac
+        os.system("clear")
+
+#==================================================================================================================
+
 def main():
     """
     The main function of the program. Handles user interaction.
     """
 
+#==================================================================================================================
 
 if __name__ == "__main__":
     main()

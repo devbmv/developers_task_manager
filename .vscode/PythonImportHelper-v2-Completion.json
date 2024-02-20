@@ -105,11 +105,20 @@
         "documentation": {}
     },
     {
+        "label": "clear_screen",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def clear_screen():\n    \"\"\"\n    Clears the console screen based on the operating system.\n    \"\"\"\n    # Check if the operating system is Windows\n    if os.name == \"nt\":\n        os.system(\"cls\")\n    else:\n        # Assume the operating system is Unix/Linux/Mac\n        os.system(\"clear\")",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function of the program. Handles user interaction.\n    \"\"\"\nif __name__ == \"__main__\":\n    main()",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function of the program. Handles user interaction.\n    \"\"\"\n#==================================================================================================================\nif __name__ == \"__main__\":\n    main()",
         "detail": "run",
         "documentation": {}
     },
