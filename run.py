@@ -29,8 +29,9 @@ else:
     # If running locally, store the tasks log on the desktop for easy access
     desktop_path = Path.home() / "Desktop"
     full_path = desktop_path / file_name
-#==================================================================================================================
-    
+# ==================================================================================================================
+
+
 def load_tasks():
     """
     Loads tasks from the log file into the global tasks list.
@@ -52,8 +53,10 @@ def load_tasks():
                     pass
             tasks.append(task_dict)
 
-#==================================================================================================================
-            
+
+# ==================================================================================================================
+
+
 def save_tasks():
     """
     Saves tasks from the global tasks list to the log file.
@@ -68,7 +71,9 @@ def save_tasks():
             count += 1
             file.write(f"{separator}\n")
 
-#==================================================================================================================
+
+# ==================================================================================================================
+
 
 def add_task(description):
     """
@@ -89,7 +94,9 @@ def add_task(description):
     save_tasks()
     print(f"Task ID {task_id}: '{description}' successfully added.")
 
-#==================================================================================================================
+
+# ==================================================================================================================
+
 
 def delete_task(task_id):
     """
@@ -104,7 +111,9 @@ def delete_task(task_id):
     save_tasks()
     print(f"Task ID {task_id} has been successfully deleted.")
 
-#==================================================================================================================
+
+# ==================================================================================================================
+
 
 def modify_task(task_id, new_description):
     """
@@ -128,7 +137,9 @@ def modify_task(task_id, new_description):
     else:
         print(f"Task ID {task_id} not found.")
 
-#==================================================================================================================
+
+# ==================================================================================================================
+
 
 def clear_screen():
     """
@@ -141,14 +152,44 @@ def clear_screen():
         # Assume the operating system is Unix/Linux/Mac
         os.system("clear")
 
-#==================================================================================================================
+
+# ==================================================================================================================
+
 
 def main():
     """
     The main function of the program. Handles user interaction.
     """
+    init()
+    if not full_path.exists():
+        full_path.touch()
 
-#==================================================================================================================
+    load_tasks()
+    print(Fore.GREEN + "Welcome to Developers' Task Manager")
+    while True:
+        time.sleep(1)
+        clear_screen()
+        print("Developers Task Manager:\n")
+        print("1: Add task\n2: Modify task\n3: Delete task\n4: Exit\n")
+        choice = input("Select action: ")
+        try:
+            if choice == "1":
+                add_task(input("Enter task: "))
+            elif choice == "2":
+                modify_task(
+                    input("Select id to modify"), input("Enter task to modify: ")
+                )
+            elif choice == "3":
+                delete_task(int(input("Choice task number: ")))
+            elif choice == "4":
+                break
+            else:
+                print("Invalid selection. Please try again.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
+# ==================================================================================================================
 
 if __name__ == "__main__":
     main()
