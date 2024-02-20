@@ -96,6 +96,15 @@
         "documentation": {}
     },
     {
+        "label": "modify_task",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def modify_task(task_id, new_description):\n    \"\"\"\n    Modifies the description of a task based on its ID.\n    Parameters:\n    - task_id (int): The ID of the task to modify.\n    - new_description (str): The new description for the task.\n    \"\"\"\n    found = False\n    for task in tasks:\n        if task[\"ID\"] == task_id:",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "run",

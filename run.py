@@ -88,7 +88,7 @@ def add_task(description):
     tasks.append(task)
     save_tasks()
     print(f"Task ID {task_id}: '{description}' successfully added.")
-    
+
 #==================================================================================================================
 
 def delete_task(task_id):
@@ -103,6 +103,30 @@ def delete_task(task_id):
     tasks = [task for task in tasks if task["ID"] != task_id]
     save_tasks()
     print(f"Task ID {task_id} has been successfully deleted.")
+
+#==================================================================================================================
+
+def modify_task(task_id, new_description):
+    """
+    Modifies the description of a task based on its ID.
+
+    Parameters:
+    - task_id (int): The ID of the task to modify.
+    - new_description (str): The new description for the task.
+    """
+    found = False
+    for task in tasks:
+        if task["ID"] == task_id:
+            task["Task"] = new_description
+            found = True
+            break
+    if found:
+        save_tasks()
+        print(
+            f"Task ID {task_id} has been successfully modified to: '{new_description}'."
+        )
+    else:
+        print(f"Task ID {task_id} not found.")
 
 #==================================================================================================================
 
