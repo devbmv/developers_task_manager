@@ -293,8 +293,9 @@ def main():
 
         elif choice == 4:
             delete_task(int(input_handler(
-                Fore.YELLOW + "Choose task number to"
-                " delete: ", "numeric", 1, tasks_count)))
+                Fore.YELLOW +
+                "Choose task to delete in"
+                f" range 1 - {tasks_count}: ", "numeric", 1, tasks_count)))
             input("Press enter to continue...")
 
         elif choice == 5:
