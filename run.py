@@ -105,24 +105,22 @@ def clear_screen():
 
 def show_tasks():
     clear_screen()
-    total_tasks = len(tasks)  # Obține numărul total de task-uri
+    total_tasks = len(tasks)
 
     for index, task in enumerate(tasks, start=1):
-        print(f"{Fore.GREEN}{'-' * 40} Task {index} {'-' * 40}")
+        print(f"{Fore.GREEN}{'-' * 36} Task {index} {'-' * 36}")
 
-        keys = list(task.keys())  # Obține lista de chei din dicționarul task
-        last_key = keys[-1]  # Determină ultima cheie
+        keys = list(task.keys())
+        last_key = keys[-1]
 
         for data in task:
             if data == last_key:
-                # Printează ultima informație cu galben
                 print(f"{data}: {Fore.YELLOW}{task[data]}")
             else:
                 print(f"{data}: {task[data]}")
 
         if index == total_tasks:
-            # Dacă este ultima iterație, adaugă linia suplimentară
-            print(Fore.GREEN+"-" * 88)
+            print(Fore.GREEN+"-" * 80)
 
 
 # ============================================================================
@@ -145,7 +143,6 @@ def load_tasks():
                     key, value = line.split(":", 1)
                     task_dict[key.strip()] = value.strip()
                 else:
-                    # Handle lines without a colon.
                     pass
             tasks.append(task_dict)
 
@@ -205,31 +202,26 @@ def delete_task(task_id):
     """
     global tasks
     try:
-        # Validare input gol
         if not task_id:
             raise ValueError("Task ID cannot be empty.")
 
-        # Validare dacă ID-ul task-ului este un număr întreg
         if not isinstance(task_id, int):
             raise ValueError("Task ID must be an integer.")
 
         # Convert task_id to string (assuming task IDs are stored as strings within the tasks list)
         task_id_str = str(task_id)
 
-        # Verificare dacă task-ul cu ID-ul specificat există în listă
         if not any(task['ID'] == task_id_str for task in tasks):
             raise ValueError(f"No task found with ID {
                              task_id}. Please check the ID and try again.")
 
-        # Filtrare task-uri pentru a elimina task-ul cu ID-ul specificat
         tasks = [task for task in tasks if task["ID"] != task_id_str]
-        save_tasks()  # Presupunând că save_tasks() gestionează corect salvarea listei de task-uri actualizată undeva
+        save_tasks()
         print(f"Task ID {task_id} has been successfully deleted.")
 
     except ValueError as e:
-        print(f"Error: {e}")  # Afișarea unui mesaj de eroare specific
+        print(f"Error: {e}")
     except Exception as e:
-        # Capturarea unei excepții generice, care ar putea captura alte erori neașteptate
         print(f"An unexpected error occurred: {e}")
         input("Press enter to continue...")
 
