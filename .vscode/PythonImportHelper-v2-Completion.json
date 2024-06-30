@@ -1,0 +1,170 @@
+[
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "colorama",
+        "description": "colorama",
+        "isExtraImport": true,
+        "detail": "colorama",
+        "documentation": {}
+    },
+    {
+        "label": "Fore",
+        "importPath": "colorama",
+        "description": "colorama",
+        "isExtraImport": true,
+        "detail": "colorama",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_PATH",
+        "kind": 5,
+        "importPath": ".vscode.font_fix",
+        "description": ".vscode.font_fix",
+        "peekOfCode": "BASE_PATH = os.environ.get(\"GITPOD_REPO_ROOT\")\nwith open(f\"{BASE_PATH}/.vscode/settings.json\", \"r+\") as f:\n    content = json.loads(f.read())\n    if \"terminal.integrated.fontFamily\" not in content:\n        print(\"Adding wider and higher font settings\")\n        content[\"terminal.integrated.lineHeight\"] = 1.2\n        content[\"terminal.integrated.letterSpacing\"] = 2\n    else:\n        print(\"Wider and higher font settings already added!\")\n    f.seek(0, os.SEEK_SET)",
+        "detail": ".vscode.font_fix",
+        "documentation": {}
+    },
+    {
+        "label": "load_tasks",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def load_tasks():\n    \"\"\"\n    Loads tasks from the log file into the global tasks list.\n    \"\"\"\n    global tasks\n    tasks.clear()\n    with open(full_path, \"r\", encoding=\"utf-8\") as file:\n        # Skip the header by splitting on the task separator\n        task_data = file.read().strip().split(\"-\" * 74 + \"\\n\")[1:]\n        for task_block in task_data:",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "save_tasks",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def save_tasks():\n    \"\"\"\n    Saves tasks from the global tasks list to the log file.\n    \"\"\"\n    with open(full_path, \"w\", encoding=\"utf-8\") as file:\n        file.write(f\"{'-'*92} List Of Tasks: {'-'*92}\\n\")\n        count = 0\n        for task in tasks:\n            task[\"ID\"] = str(count)\n            for key, value in task.items():",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "add_task",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def add_task(description):\n    \"\"\"\n    Adds a new task with the given description to the\n    tasks list and logs it to the file.\n    Parameters:\n    - description (str): The description of the task to be added.\n    \"\"\"\n    task_id = len(tasks) + 1\n    now = time.localtime()\n    task = {",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "delete_task",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def delete_task(task_id):\n    \"\"\"\n    Deletes a task based on its ID.\n    Parameters:\n    - task_id (int): The ID of the task to be deleted.\n    \"\"\"\n    global tasks\n    task_id = str(task_id)\n    tasks = [task for task in tasks if task[\"ID\"] != task_id]\n    save_tasks()",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "modify_task",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def modify_task(task_id, new_description):\n    \"\"\"\n    Modifies the description of a task based on its ID.\n    Parameters:\n    - task_id (int): The ID of the task to modify.\n    - new_description (str): The new description for the task.\n    \"\"\"\n    found = False\n    for task in tasks:\n        if task[\"ID\"] == task_id:",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "clear_screen",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def clear_screen():\n    \"\"\"\n    Clears the console screen based on the operating system.\n    \"\"\"\n    # Check if the operating system is Windows\n    if os.name == \"nt\":\n        os.system(\"cls\")\n    else:\n        # Assume the operating system is Unix/Linux/Mac\n        os.system(\"clear\")",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function of the program. Handles user interaction.\n    \"\"\"\n    init()\n    load_tasks()\n    print(Fore.GREEN + \"Welcome to Developers' Task Manager\")\n    while True:\n        time.sleep(1)\n        clear_screen()",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "tasks",
+        "kind": 5,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "tasks = []\n# Initialize task ID based on the current length of tasks\nTASK_ID = 0\n# Define a separator for visual clarity in the log file\nseparator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "TASK_ID",
+        "kind": 5,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "TASK_ID = 0\n# Define a separator for visual clarity in the log file\nseparator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:\n    # We are on Heroku or a similar cloud environment, use a relative path\n    full_path = Path(LOG_FILE_NAME)",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "separator",
+        "kind": 5,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "separator = \"-\" * 200\n# Define the filename for storing task logs\nfile_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:\n    # We are on Heroku or a similar cloud environment, use a relative path\n    full_path = Path(LOG_FILE_NAME)\nelse:\n    # Local environment, attempt to use the desktop for easy access",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "file_name",
+        "kind": 5,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "file_name = \"tasks_log.txt\"\nLOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:\n    # We are on Heroku or a similar cloud environment, use a relative path\n    full_path = Path(LOG_FILE_NAME)\nelse:\n    # Local environment, attempt to use the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name",
+        "detail": "run",
+        "documentation": {}
+    },
+    {
+        "label": "LOG_FILE_NAME",
+        "kind": 5,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "LOG_FILE_NAME = os.getenv(\"TASKS_LOG_PATH\", file_name)\n# Determine if the environment is Heroku or similar cloud environment\nif \"DYNO\" in os.environ:\n    # We are on Heroku or a similar cloud environment, use a relative path\n    full_path = Path(LOG_FILE_NAME)\nelse:\n    # Local environment, attempt to use the desktop for easy access\n    desktop_path = Path.home() / \"Desktop\"\n    full_path = desktop_path / file_name\n# Ensure the file exists, creating it if necessary",
+        "detail": "run",
+        "documentation": {}
+    }
+]
