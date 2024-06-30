@@ -28,12 +28,12 @@ class TestTaskManager(unittest.TestCase):
 
     def test_delete_task(self):
         add_task("Test task")
-        delete_task(1)  # Task IDs start from
+        delete_task(1)
         self.assertEqual(len(tasks), 1)
 
     def test_modify_task(self):
         add_task("Test task")
-        modify_task(1, "Modified task")  # Task IDs start from 1
+        modify_task(1, "Modified task")
         self.assertEqual(tasks[1]["Task"], "Modified task")
 
 
