@@ -197,10 +197,6 @@ The following outlines the skeleton of the "Developers Task Manager" program, de
 - modify_task: A function to modify the description of an existing task based on its ID.
 - main: The main function that handles user interaction and manages the program's workflow.
 
-![Flow Logic Diagram](assets\screenshots\skeleton1.png)
-
-![Flow Logic Diagram](assets\screenshots\skeleton2.png)
-
 ## Flow Logic
 
   The flow logic diagram below illustrates the interactions and processes within the "Developers Task Manager" program.
@@ -239,7 +235,7 @@ The following outlines the skeleton of the "Developers Task Manager" program, de
 
 ## Flow Logic Diagram
 
-![Flow Logic Diagram](assets\screenshots\Flow_Logic_Diagram.png)
+![Flow Logic Diagram](assets/screenshots/Flow_Logic_Diagram.png)
 
 [Back to Top](#developers-task-manager)
 
@@ -371,7 +367,7 @@ Used to enhance the user interface by coloring text and providing visual feedbac
   Expected Result: The task should be added to the list and a confirmation message should be displayed.
   Result: Pass
 
-![Add Task Testing](assets\screenshots\add_task.png)
+![Add Task Testing](assets/screenshots/add_task.png)
 
 ### 2. Modifying a Task Test
 
