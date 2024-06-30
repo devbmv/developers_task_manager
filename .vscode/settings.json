@@ -22,8 +22,12 @@
    },
    "files.autoSave": "afterDelay",
    "workbench.colorTheme": "Visual Studio Dark",
+<<<<<<< HEAD
    "editor.defaultFormatter": "HookyQR.beautify",
    "[markdown]": {
       "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
    }
+=======
+   "editor.defaultFormatter": "HookyQR.beautify"
+>>>>>>> c55132b11cccd9a3d2a543015a7248511c213343
 }

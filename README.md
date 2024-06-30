@@ -36,7 +36,10 @@ Designed for developers by developers, this task manager stands out by its simpl
 - Each feature is crafted with the developer's workflow in mind, aiming to provide a seamless and intuitive task management process
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c55132b11cccd9a3d2a543015a7248511c213343
 ## Adding a File to the User's Desktop
 
 This project includes functionality to automatically generate a file and place it directly onto the user's desktop, making it easily accessible for further use. 
