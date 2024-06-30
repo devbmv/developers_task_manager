@@ -6,7 +6,11 @@ providing easy access and persistent storage.
 """
 
 import os
+<<<<<<< HEAD
 from time import sleep,strftime,localtime
+=======
+from time import sleep, strftime, localtime
+>>>>>>> master
 from pathlib import Path
 from colorama import Fore, Back, Style, init
 
@@ -14,7 +18,11 @@ from colorama import Fore, Back, Style, init
 tasks = []
 
 # Initialize task ID based on the current length of tasks
+<<<<<<< HEAD
 TASK_ID = 1
+=======
+TASK_ID = 0
+>>>>>>> master
 
 # Define a separator for visual clarity in the log file
 separator = "-" * 200
@@ -42,7 +50,11 @@ else:
     desktop_path = Path.home() / "Desktop"
     full_path = desktop_path / file_name
 
+<<<<<<< HEAD
 result_display_time =2
+=======
+result_display_time = 2
+>>>>>>> master
 # Ensure the file exists, creating it if necessary
 if not full_path.exists():
     # This will create the file in the specified path
@@ -50,6 +62,7 @@ if not full_path.exists():
 
 # ============================================================================
 
+<<<<<<< HEAD
 def input_handler(msg, data_type,min_val=None,max_val=None):
     
     min_val = int(min_val) if min_val is not None else None
@@ -73,6 +86,36 @@ def input_handler(msg, data_type,min_val=None,max_val=None):
         elif data_type == "numeric" and user_input.isdigit():
             return user_input
         elif data_type == "alfanumeric" and user_input.isalnum() or ' ' in user_input:
+=======
+
+def input_handler(msg, data_type, min_val=None, max_val=None):
+
+    min_val = int(min_val) if min_val is not None else None
+    max_val = int(max_val) if max_val is not None else None
+    while True:
+
+        user_input = input(msg)
+
+        if not user_input:
+            print("Input can't be blank, try again:")
+            continue
+
+        elif (min_val is not None
+              and max_val is not None
+              and user_input.isnumeric()):
+            if (int(user_input) < min_val or int(user_input) > max_val):
+                print("Input is not in acceptable range, try again:")
+                sleep(result_display_time)
+                continue
+
+        if (data_type == "alfabetic"
+                and user_input.isalpha() or ' ' in user_input):
+            return user_input
+        elif data_type == "numeric" and user_input.isdigit():
+            return user_input
+        elif (data_type == "alfanumeric"
+              and user_input.isalnum() or ' ' in user_input):
+>>>>>>> master
             return user_input
         elif data_type == "float":
             try:
@@ -80,7 +123,13 @@ def input_handler(msg, data_type,min_val=None,max_val=None):
                 return user_input
             except ValueError:
                 pass
+<<<<<<< HEAD
         input(Fore.RED + f"\rInput should be {data_type}, press Enter to continue...")
+=======
+        input(
+            Fore.RED +
+            f"\rInput should be {data_type}, press Enter to continue...")
+>>>>>>> master
 
 
 # ============================================================================
@@ -103,6 +152,7 @@ def clear_screen():
 
 def show_tasks():
     clear_screen()
+<<<<<<< HEAD
     total_tasks = len(tasks)  # Obține numărul total de task-uri
 
     for index, task in enumerate(tasks, start=1):
@@ -114,12 +164,27 @@ def show_tasks():
         for data in task:
             if data == last_key:
                 # Printează ultima informație cu galben
+=======
+    total_tasks = len(tasks)
+
+    for index, task in enumerate(tasks, start=0):
+        print(f"{Fore.GREEN}{'-' * 40} Task {index} {'-' * 40}")
+
+        keys = list(task.keys())
+        last_key = keys[-1]
+
+        for data in task:
+            if data == last_key:
+>>>>>>> master
                 print(f"{data}: {Fore.YELLOW}{task[data]}")
             else:
                 print(f"{data}: {task[data]}")
 
         if index == total_tasks:
+<<<<<<< HEAD
             # Dacă este ultima iterație, adaugă linia suplimentară
+=======
+>>>>>>> master
             print(Fore.GREEN+"-" * 88)
 
 
@@ -134,7 +199,12 @@ def load_tasks():
     tasks.clear()
     with open(full_path, "r", encoding="utf-8") as file:
         # Skip the header by splitting on the task separator
+<<<<<<< HEAD
         task_data = file.read().strip().split("-" * 74 + "\n")[1:]
+=======
+        task_data = file.read().strip().split(
+            "-" * 74 + "\n")[1:]  # posibil de skimbat in 0
+>>>>>>> master
         for task_block in task_data:
             task_info = task_block.strip().split("\n")
             task_dict = {}
@@ -157,7 +227,11 @@ def save_tasks():
     """
     with open(full_path, "w", encoding="utf-8") as file:
         file.write(f"{'-'*92} List Of Tasks: {'-'*92}\n")
+<<<<<<< HEAD
         count = 1
+=======
+        count = 0
+>>>>>>> master
         for task in tasks:
             task["ID"] = str(count)
             for key, value in task.items():
@@ -186,15 +260,23 @@ def add_task(description):
     tasks.append(task)
     save_tasks()
     print(f"Task ID {task_id}: '{description}' successfully added.")
+<<<<<<< HEAD
     
 # ============================================================================
 
+=======
+
+# ============================================================================
+
+
+>>>>>>> master
 def delete_task(task_id):
     """
     Deletes a task based on its ID.
 
     Parameters:
     - task_id (int): The ID of the task to be deleted.
+<<<<<<< HEAD
 
     Raises:
     - ValueError: If the task_id is not an integer, if it cannot be found in the task list,
@@ -231,6 +313,43 @@ def delete_task(task_id):
         input("Press enter to continue...")
 
 
+=======
+    """
+    global tasks
+    try:
+        # Validate input, allowing 0 as a valid ID
+        if task_id is None or task_id == "":
+            raise ValueError("Task ID cannot be empty.")
+
+        # Validate if task_id is an integer
+        if not isinstance(task_id, int):
+            raise ValueError("Task ID must be an integer.")
+
+        task_id_str = str(task_id)
+
+        # Find the task with the specified ID
+        task_to_delete = None
+        for task in tasks:
+            if task['ID'] == task_id_str:
+                task_to_delete = task
+                break
+
+        if task_to_delete:
+            tasks.remove(task_to_delete)
+            save_tasks()
+            print(f"Task ID {task_id} has been successfully deleted.")
+        else:
+            raise ValueError(
+                f"No task found with ID {task_id}. Please check the ID"
+                "and try again.")
+
+    except ValueError as e:
+        print(f"Error: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        input("Press enter to continue...")
+
+>>>>>>> master
 # ============================================================================
 
 
@@ -245,7 +364,11 @@ def modify_task(task_id, new_description):
 
     found = False
     for task in tasks:
+<<<<<<< HEAD
         if task["ID"] == task_id:
+=======
+        if task["ID"] == str(task_id):
+>>>>>>> master
             task["Task"] = new_description
             found = True
             break
@@ -261,6 +384,10 @@ def modify_task(task_id, new_description):
         print(f"Task ID {task_id} not found.")
 # ============================================================================
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 def main():
     """
     The main function of the program. Handles user interaction.
@@ -272,6 +399,7 @@ def main():
         clear_screen()
         print(Fore.GREEN + "Developers Task Manager:\n")
         print(menu_items)
+<<<<<<< HEAD
         
         tasks_count=len(tasks)
         
@@ -285,6 +413,24 @@ def main():
                 Fore.YELLOW + "Select id to modify: ",'numeric',0,tasks_count)
             new_description = input_handler(
                 Fore.YELLOW + "Enter new description: ","alfanumeric")
+=======
+
+        tasks_count = len(tasks)
+
+        choice = int(input_handler(
+            "Select action between 1 to 5: " + Fore.YELLOW, "numeric", 1, 5))
+
+        if choice == 1:
+            add_task(input_handler(Fore.YELLOW +
+                                   "Enter task: ", "alfanumeric"))
+
+        elif choice == 2:
+            task_id_to_modify = input_handler(
+                Fore.YELLOW +
+                "Select id to modify: ", 'numeric', 0, tasks_count)
+            new_description = input_handler(
+                Fore.YELLOW + "Enter new description: ", "alfanumeric")
+>>>>>>> master
             modify_task(task_id_to_modify, new_description)
 
         elif choice == 3:
@@ -293,15 +439,26 @@ def main():
 
         elif choice == 4:
             delete_task(int(input_handler(
+<<<<<<< HEAD
                 Fore.YELLOW + "Choose task number to delete: ","numeric",1,tasks_count)))
+=======
+                Fore.YELLOW + ("Choose task"
+                            "number to delete: "), "numeric", 0, tasks_count)))
+>>>>>>> master
             input("Press enter to continue...")
 
         elif choice == 5:
             print(Fore.YELLOW + "Good bye !!!")
+<<<<<<< HEAD
             sleep(result_display_time )
             break
         sleep(result_display_time )
 
+=======
+            sleep(result_display_time)
+            break
+        sleep(result_display_time)
+>>>>>>> master
 
 
 if __name__ == "__main__":
