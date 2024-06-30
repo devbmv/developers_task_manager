@@ -1,105 +1,439 @@
-# Developers' Task Manager
+# Developer's Task Manager
+
+![Exit](assets/screenshots/responsive.png)
+
+[Preview,I am responsive, outside site](http://www.responsinator.com/?url=https%3A%2F%2Ftask-managers-62d065a6049c.herokuapp.com%2F)
+
+[View Live App Here](https://task-managers-62d065a6049c.herokuapp.com/)
+
+# Table Of Contents
+
+- [Developer's Task Manager](#developers-task-manager)
+- [Table Of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [User Experience](#user-experience)
+  - [Site \& User Goals](#site--user-goals)
+    - [Site Goals](#site-goals)
+    - [User Goals](#user-goals)
+  - [User Stories](#user-stories)
+    - [1. Adding a Task](#1-adding-a-task)
+    - [2. Modifying a Task](#2-modifying-a-task)
+    - [3. Deleting a Task](#3-deleting-a-task)
+    - [4. Viewing All Tasks](#4-viewing-all-tasks)
+    - [5. Persistent Storage](#5-persistent-storage)
+    - [6. Real-Time Feedback](#6-real-time-feedback)
+    - [7. Secure Data Handling](#7-secure-data-handling)
+- [Development Planes](#development-planes)
+  - [Strategy](#strategy)
+- [Scope](#scope)
+  - [Functional Specifications](#functional-specifications)
+- [Structure](#structure)
+- [Skeleton](#skeleton)
+  - [Flow Logic](#flow-logic)
+  - [Flow Logic Diagram](#flow-logic-diagram)
+- [Surface and Features](#surface-and-features)
+- [Technologies Used](#technologies-used)
+- [Bugs \& Issues](#bugs--issues)
+- [Libraries Imported](#libraries-imported)
+- [Testing](#testing)
+  - [Manual Testing](#manual-testing)
+    - [1. Adding a Task Test](#1-adding-a-task-test)
+    - [2. Modifying a Task Test](#2-modifying-a-task-test)
+    - [3. Deleting a Task Test](#3-deleting-a-task-test)
+    - [4. Showing All Tasks Test](#4-showing-all-tasks-test)
+    - [5. Persistent StorageTest](#5-persistent-storagetest)
+  - [Automated Testing](#automated-testing)
+- [Pep-8 Testing](#pep-8-testing)
+
+***
+
+# Introduction
 
 The Developers' Task Manager is a Python-based application designed to help developers organize and manage their tasks efficiently. It provides a simple interface to add, modify, and delete tasks, ensuring that developers can focus on what they do best: coding.
+***
 
-![Program Photo](program-screenshot.JPG "Optional Title Text")
+# User Experience
 
-## Overview
-This project, Developers' Task Manager, is a console-based application designed to help software developers manage their tasks efficiently. It offers a simple yet powerful interface to add, modify, delete, and view tasks, making it easier for developers to keep track of their work progress. Built with Python, the application emphasizes ease of use, flexibility, and productivity.
+## Site & User Goals
 
-The key features of Developers' Task Manager include:
+### Site Goals
 
-Task Addition: Users can add new tasks with descriptions, automatically assigning them a unique ID and timestamp.
-Task Modification: Offers the ability to modify the description of existing tasks, ensuring that task information is always up to date.
-Task Deletion: Users can remove tasks that are no longer relevant, keeping the task list clean and focused.
-Task Viewing: Provides a comprehensive view of all tasks, along with their details, helping users quickly find the information they need.
-Designed for developers by developers, this task manager stands out by its simplicity and direct approach to task management. Whether you're working on a large project or juggling multiple small projects, Developers' Task Manager is your companion in maintaining productivity and organization
+- Provide an Intuitive User Interface: Ensure that the interface is user-friendly and easy to navigate for developers of all skill levels.
+- Facilitate Task Management: Allow users to easily add, modify, delete, and view tasks.
+- Ensure Persistent Storage: Store tasks in a reliable and easily accessible manner.
+- Provide Real-Time Feedback: Offer immediate confirmation or error messages to users for actions performed.
+- Support Cross-Platform Use: Make the application accessible on various operating systems.
 
+### User Goals
 
-## Features
-   Developers' Task Manager provides a streamlined task management experience through its set of features designed to enhance productivity and organization. Here are the core functionalities:
+- Efficient Task Management: Quickly add,read, modify,remove tasks.
+- View Task History: Access a log of all tasks to track progress and changes.
+- Receive Confirmation Messages: Get immediate feedback when a task is added, modified, or deleted.
+- Secure Data Handling: Ensure tasks are stored securely and are not lost.
 
-- Simple Task Creation: Add tasks with ease, providing only the essential details such as the task description. Each task is automatically timestamped and assigned a unique identifier upon creation.
+## User Stories
 
-- Effortless Task Modification: Update the details of any task as requirements change. This feature ensures that task descriptions are always accurate and reflect the current state of work.
+### 1. Adding a Task
 
-- Quick Task Deletion: Remove completed or obsolete tasks from the list with a single command. This helps in maintaining a clean and focused list of active tasks.
+As a developer, I want to add a new task with a description so that I can keep track of my upcoming work.
 
-- Comprehensive Task Listing: View all tasks in an organized list, complete with IDs, descriptions, and timestamps. This overview allows for easy tracking of work progress and task prioritization.
+**Acceptance Criteria:**
 
-- Console-Based Interface: Operate entirely within the console, making it accessible for developers who prefer working within a terminal or command prompt environment.
+A. The system should prompt the user to enter a task description.  
+B. The task should be assigned a unique ID, current date, and time.  
+C. The task should be saved and visible in the task list.  
+D. A confirmation message should be displayed.  
 
-- Cross-Platform Compatibility: Designed to run on any platform that supports Python, including Windows, macOS, and Linux. This ensures that you can manage your tasks regardless of your operating system.
+### 2. Modifying a Task
 
-- Color-Coded Output: Utilizes color coding to enhance readability and highlight important information within the console.
+As a developer, I want to modify the description of an existing task so that I can update the task details if they change.
 
-- Each feature is crafted with the developer's workflow in mind, aiming to provide a seamless and intuitive task management process
+**Acceptance Criteria:**
 
+A. The system should prompt the user to enter the task ID they wish to modify.  
+B. The system should allow the user to enter a new description.  
+C. The task should be updated with the new description.  
+D. A confirmation message should be displayed if the modification is successful.  
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+### 3. Deleting a Task
 
-=======
->>>>>>> c55132b11cccd9a3d2a543015a7248511c213343
->>>>>>> master
-## Adding a File to the User's Desktop
+As a developer, I want to delete a task by its ID so that I can remove tasks that are no longer needed.
 
-This project includes functionality to automatically generate a file and place it directly onto the user's desktop, making it easily accessible for further use. 
+**Acceptance Criteria:**
 
-### How It Works
+A. The system should prompt the user to enter the task ID they wish to delete.  
+B. The task should be removed from the list.  
+C. A confirmation message should be displayed if the deletion is successful.  
+D. An error message should be displayed if the task ID does not exist.  
 
-When the program executes a specific function, it checks for the existence of a designated file. If the file does not exist, the program will create it and save it to the user's desktop. This ensures that the user has immediate access to the file without having to navigate through the file system.
+### 4. Viewing All Tasks
 
-### File Location
+As a developer, I want to view a list of all tasks so that I can see what work needs to be done and track my progress.
 
-The file is saved to the desktop of the current user. The exact path depends on the operating system and the current user profile. For most users, the file can be found at:
+**Acceptance Criteria:**
 
-- **Windows**: `C:\Users\<UserName>\Desktop\`
-- **macOS**: `/Users/<UserName>/Desktop/`
-- **Linux**: `/home/<UserName>/Desktop/`
+A. The system should display all tasks with their ID, date, time, and description.  
+B. The tasks should be displayed in a readable format.  
+C. The list should be up-to-date with all added, modified, or deleted tasks.  
 
-Replace `<UserName>` with the actual username of the account you're logged into.
+### 5. Persistent Storage
 
-### Permissions
+As a developer, I want to have my tasks saved in a file on my desktop so that I can access them later even if the program is closed.
 
-Please ensure that the application has the necessary permissions to write to the desktop. On some systems, you might need to adjust your security settings or run the application with elevated privileges.
+**Acceptance Criteria:**
 
-### Customizing File Output
+A. The tasks should be saved in a file on the user's desktop.  
+B. The file should be updated with every add, modify, or delete action.  
+C. The system should load tasks from the file when the program starts.  
 
-If you wish to change the output file's name or type, you can do so by modifying the relevant portion of the code. Please refer to the project's documentation for detailed instructions on how to make these adjustments.
+### 6. Real-Time Feedback
 
-## Responsiveness
-This project is designed with responsiveness in mind, ensuring that it provides a seamless and efficient user experience across a variety of devices and screen sizes. Here's how we achieve this:
+As a developer, I want to receive immediate feedback on my actions so that I know whether my task was successfully added, modified, or deleted.
 
-Adaptive Layouts: The layout adapts based on the device screen size, providing an optimal viewing experience whether on a mobile phone, tablet, or desktop computer.
-Flexible Images: All images used in the project are flexible and adjust smoothly to fit the screen without distorting the aspect ratio or losing quality.
-Media Queries: CSS media queries are extensively used to apply different styling rules based on the device characteristics, such as its width, height, and orientation.
-Testing: Rigorous testing has been conducted on multiple devices to ensure compatibility and responsiveness. This includes both physical devices and emulators to cover a wide range of screen sizes and resolutions
+**Acceptance Criteria:**
 
+A. The system should display a confirmation message after a task is added, modified, or deleted.  
+B. Error messages should be displayed if an action fails (e.g., invalid task ID).  
+C. Feedback messages should be clear and concise.  
 
-## Installation
+### 7. Secure Data Handling
 
-Before running the Developers' Task Manager, ensure you have Python installed on your system. This application is compatible with Python 3.6 or later versions.
+As a developer, I want to ensure my tasks are securely stored and not lost so that I can trust the task manager with my data.
 
-1. Clone the repository or download the source code.
-2. Navigate to the project directory.
-3. Install the required dependencies:
+**Acceptance Criteria:**
 
+A. Tasks should not be lost even if the program is closed or restarted.  
+B. The log file should be saved in a reliable and persistent manner.
 
-pip install -r requirements.txt
+# Development Planes
 
-## License
+## Strategy
 
-Copyright (c) 2024 Mihail Barbascumpa
+The inception behind the Developers Task Manager was to develop an efficient, user-friendly task management tool specifically for developers. This tool leverages a console-based interface to align with the frequent user's typical workflow and preferences, aiming to provide a seamless and engaging experience for managing tasks.
 
-Permission is hereby granted, free of charge,
+The application *needs* to enable the **User** to:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. Confidently progress through the app and have a full understanding of how it works.
+2. Access the tasks in a separate file.
+3. Enjoy using the app over the console, which is their usual framework.
 
+The application *needs* to enable the **Client** to:
+
+1. Develop a task management tool by creating a custom console application that logs tasks.
+2. Provide a functional and intuitive user interface within the console environment.
+3. Ensure the application is highly accessible in terms of user input and output.
+
+# Scope
+
+This module provides functionality for managing tasks for developers. It allows users to add, modify, delete, and list tasks. Each task includes an ID, date, time, and description. Tasks are stored in a log file on the user's desktop, providing easy access and persistent storage.
+
+## Functional Specifications
+
+- This module provides functionality for managing tasks for developers.
+- It allows users to add, modify, delete, and list tasks.
+- Each task includes an ID, date, time, and description.
+- Tasks are stored in a log file on the user's desktop, providing easy access and persistent storage.
+
+# Structure
+
+Due to the circumstances around deployment, the task manager will be organized on a single page, with a terminal acting as the basis for user and application interaction. Consequently, the text-based content will act as the main form of user interface design and interaction for the user. This will be discussed further down the README document.
+
+# Skeleton
+
+The following outlines the skeleton of the "Developers Task Manager" program, detailing the primary components and their interactions:
+
+- tasks: A list to store all task dictionaries. Each task includes an ID, date, time, and description.
+- separator: A string used to separate tasks visually in the log file.
+- file_name: The name of the log file where tasks are stored.
+- LOG_FILE_NAME: The environment variable for the log file name, defaulting to file_name.
+- full_path: The full path to the log file, determined based on the environment (local or cloud).
+- input_handler: A function to handle and validate user inputs.
+- clear_screen: A function to clear the terminal screen.
+- show_tasks: A function to display all tasks in the terminal.
+- load_tasks: A function to load tasks from the log file into the tasks list.
+- save_tasks: A function to save tasks from the tasks list to the log file.
+- add_task: A function to add a new task to the tasks list and save it to the log file.
+- delete_task: A function to delete a task from the tasks list based on its ID.
+- modify_task: A function to modify the description of an existing task based on its ID.
+- main: The main function that handles user interaction and manages the program's workflow.
+
+![Flow Logic Diagram](assets\screenshots\skeleton1.png)
+
+![Flow Logic Diagram](assets\screenshots\skeleton2.png)
+
+## Flow Logic
+
+  The flow logic diagram below illustrates the interactions and processes within the "Developers Task Manager" program.
+
+1. Start: The user launches the program.
+2. Load Tasks: The program loads existing tasks from the log file.
+3. Main Menu: The user is presented with a menu to choose an action.
+
+- Add Task:
+  - Input task description.
+  - Task added to list and saved to log file.
+  - Confirmation message displayed.
+  - Return to Main Menu.
+
+- Modify Task:
+  - Input task ID and new description.
+  - Task is modified and saved to log file.
+  - Confirmation message displayed.
+  - Return to Main Menu.
+  
+- Show Tasks:
+  - Display all tasks with details.
+  - Return to Main Menu.
+
+- Delete Task:
+  - Input task ID to delete.
+  - Task is deleted from the list and saved to log file.
+  - Confirmation message displayed.
+  - Return to Main Menu.
+
+- Exit:
+  - Display exit message.
+  - End program.
+
+4. Exit: The user exits the program.
+
+## Flow Logic Diagram
+
+![Flow Logic Diagram](assets\screenshots\Flow_Logic_Diagram.png)
+
+[Back to Top](#developers-task-manager)
+
+# Surface and Features
+
+The "Developers Task Manager" operates entirely within a terminal interface, offering a straightforward and text-based user experience. Below is a description of the main screens and interactions within the program.
+
+Main Menu
+Upon starting the program, users are greeted with the main menu, which displays the available actions:
+
+ ![Main menu](assets/screenshots/main_menu.png)
+
+Adding a Task
+When the user selects the option to add a task, they are prompted to enter a task description:
+
+![Add task](assets/screenshots/add_task.png)
+
+Modifying a Task
+When the user selects the option to modify a task, they are prompted to enter the task ID and the new description:
+
+ ![Modify task](assets/screenshots/modify_task.png)
+
+Showing Tasks
+When the user selects the option to show tasks, all tasks are displayed with their details:
+
+![Show task](assets/screenshots/show_tasks.png)
+
+Deleting a Task
+When the user selects the option to delete a task, they are prompted to enter the task ID to delete:
+
+ ![Delete task](assets/screenshots/delete_task.png)
+
+Exiting the Program
+When the user selects the option to exit, a farewell message is displayed, and the program terminates:
+
+![Exit](assets/screenshots/exit.png)
+
+***
+
+# Technologies Used
+
+These technologies work together to provide a robust and user-friendly task management application for developers:
+
+- Python
+- PEP8
+- Lighthouse
+- Colorama
+- OS Module
+- Pathlib Module
+- Time Module
+- Terminal/Command Line Interface
+
+***
+
+# Bugs & Issues
+
+During the development of the "Developers Task Manager" project, the following bugs and issues were encountered and resolved:
+
+1. Incorrect Task ID Handling:
+
+- Issue: Task IDs were not handled properly when tasks were deleted or modified. This led to incorrect task IDs being displayed or referenced.
+- Solution: Ensured that task IDs are consistently managed and updated when tasks are added, modified, or deleted. Used list indexing and string conversion to handle task IDs correctly.
+  
+2. File Path Issues:
+
+- Issue: The application faced issues in determining the correct file path for storing the task log file, especially when deployed in different environments (local vs. cloud).
+- Solution: Used the pathlib module to handle file paths in an object-oriented way and ensured compatibility across different operating systems. Added checks to determine the environment (local or cloud) and set the file path accordingly.
+  
+3. User Input Validation:
+
+- Issue: There were issues with user input validation, such as accepting empty inputs or invalid task IDs.
+- Solution: Implemented the input_handler function to handle and validate user inputs for different data types. Added checks to ensure inputs are not empty and fall within acceptable ranges.
+
+4. Task Display Formatting:
+
+- Issue: Tasks were not displayed in a readable and organized format, making it difficult for users to read task details.
+- Solution: Improved the show_tasks function to format task display using colored text (with the colorama library) and consistent separators. This enhanced readability and provided a better user experience.
+
+5. Error Handling:
+
+- Issue: The application lacked proper error handling, leading to crashes or undefined behavior when unexpected inputs or conditions occurred.
+- Solution: Added try-except blocks to handle exceptions gracefully and provide meaningful error messages to the user. Ensured that the application continues to run smoothly even when errors occur.
+
+6. Persistent Storage Reliability:
+
+- Issue: Tasks were sometimes not saved or loaded correctly, leading to data loss or inconsistency.
+- Solution: Enhanced the save_tasks and load_tasks functions to ensure tasks are reliably saved to and loaded from the log file. Added checks to verify file existence and integrity.
+
+7. Cross-Platform Compatibility:
+
+- Issue: The application faced issues with terminal commands and file paths that differed between operating systems (Windows, macOS, Linux).
+- Solution: Used the os and pathlib modules to handle system-specific operations in a cross-platform manner. Ensured that terminal commands for clearing the screen and file path handling work correctly on all supported platforms.
+  
+By addressing these bugs and issues, the "Developers Task Manager" project was improved to provide a reliable, user-friendly, and cross-platform task management solution for developers.
+
+# Libraries Imported
+
+- ## os
+
+Standard Python library used for interacting with the operating system.
+Utilized to determine the path to the user's desktop and to check if the environment is local or cloud-based.
+
+- ## time
+
+Standard Python library used for time-related operations.
+Functions used: sleep, strftime, localtime.
+
+- ## pathlib
+
+Standard Python library for working with filesystem paths in an object-oriented way.
+Used to create and check files and directories.
+
+- ## colorama
+
+External Python library used to add color to text displayed in the terminal.
+Used to enhance the user interface by coloring text and providing visual feedback.
+
+# Testing
+
+## Manual Testing
+
+### 1. Adding a Task Test
+
+- Add a new task.
+  Steps:
+  Run the program.
+  Select the option to add a task.
+  Enter a task description.
+  Expected Result: The task should be added to the list and a confirmation message should be displayed.
+  Result: Pass
+
+![Add Task Testing](assets\screenshots\add_task.png)
+
+### 2. Modifying a Task Test
+
+- Modify an existing task.
+  Steps:
+  Run the program.
+  Select the option to modify a task.
+  Enter the task ID and the new description.
+  Expected Result: The task should be updated with the new description and a confirmation message should be displayed.
+  Result: Pass
+
+![Modify Task Testing](assets/screenshots/modify_task.png)
+
+### 3. Deleting a Task Test
+
+- Delete an existing task.
+  Steps:
+  Run the program.
+  Select the option to delete a task.
+  Enter the task ID.
+  Expected Result: The task should be removed from the list and a confirmation message should be displayed.
+  Result: Pass
+  
+![Deleting a Task Test](assets/screenshots/delete_task.png)
+
+### 4. Showing All Tasks Test
+
+- Display all tasks.
+  Steps:
+  Run the program.
+  Select the option to show all tasks.
+  Expected Result: All tasks should be displayed with their details.
+  Result: Pass
+
+![Showing All Tasks Test](assets/screenshots/show_tasks.png)
+
+### 5. Persistent StorageTest
+
+- Ensure tasks are saved and loaded correctly.
+  Steps:
+  Run the program and add several tasks.
+  Exit the program.
+  Run the program again.
+  Expected Result: All previously added tasks should be loaded and displayed correctly.
+  Result: Pass
+
+## Automated Testing
+
+- ## For automated testing, I have been use the unittest module in Python to create unit tests for this project.The image above shows the result of a unit test that failed. This particular test was designed to verify that the show_tasks function Modify was fail. The failure indicates that the function did not produce the expected output, which means there might be an issue with how tasks are being displayed or how the output is being captured during the test
+
+![Showing All Tasks Test](assets/screenshots/unitTestFail.png)
+
+- ## The image above shows the result of a unit test that passed. This test was also designed to verify the basic  functions. The success of this test indicates that the functions worked correctly and produced the expected output, ensuring that all tasks were displayed as intended
+
+![Showing All Tasks Test](assets/screenshots/uniTestPass.png)
+
+# Pep-8 Testing
+
+- ## This screenshot displays the failure of a PEP-8 compliance test, indicating that the code did not adhere to PEP-8 standards
+
+![Showing All Tasks Test](assets/screenshots/pep8Fail.png)
+
+- ## This screenshot displays the successful passing of a PEP-8 compliance test, indicating that the code adheres to PEP-8 standards
+
+![Showing All Tasks Test](assets/screenshots/pep8Pass.png)
