@@ -6,7 +6,6 @@ providing easy access and persistent storage.
 """
 
 import os
-<<<<<<< HEAD
 from time import sleep,strftime,localtime
 =======
 from time import sleep, strftime, localtime
@@ -18,7 +17,6 @@ from colorama import Fore, Back, Style, init
 tasks = []
 
 # Initialize task ID based on the current length of tasks
-<<<<<<< HEAD
 TASK_ID = 1
 =======
 TASK_ID = 0
