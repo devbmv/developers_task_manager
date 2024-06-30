@@ -198,9 +198,9 @@
 - modify_task: A function to modify the description of an existing task based on its ID.
 - main: The main function that handles user interaction and manages the program's workflow.
 
-   ![Skeleton one](assets\screenshots\skeleton1.png)
+   ![Skeleton one](assets/screenshots/skeleton1.png)
 
-   ![Skeleton two](assets\screenshots\skeleton2.png)
+   ![Skeleton two](assets/screenshots/skeleton2.png)
 
 ## Flow Logic
 
@@ -372,7 +372,7 @@
    Expected Result: The task should be added to the list and a confirmation message should be displayed.
    Result: Pass
 
-   ![Add Task Testing](assets\screenshots\add_task.png)
+   ![Add Task Testing](assets/screenshots/add_task.png)
 
 ### 2. Modifying a Task Test
 
